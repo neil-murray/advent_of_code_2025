@@ -3,6 +3,7 @@ library(tidyverse)
 
 # Day 1 - Part 1 -----------------------------------------------------------
 
+# Get number of times dial lands on zero
 
  
 day1_input <- readLines("day1_input.txt")
@@ -17,34 +18,36 @@ input_num <- ifelse(substr(day1_input, 1, 1) == "R",
 input_mod <- input_num %% 100
 
 # Set result to be initially 50
-pt1_prev_pos <- 50
+prev_position <- 50
 
 # Counter for number of times pointer lands on zero
-pt1_total <- 0
+total <- 0
 
 
 for (i in seq_along(input_mod)) {
+  
+  this_rotation <- input_mod[i]
 
-  pt1_curr_pos <- pt1_prev_pos + input_mod[i]
+  current_position <- prev_position + this_rotation
 
-  if (pt1_curr_pos > 99) {
+  if (current_position > 99) {
 
-    pt1_curr_pos <- pt1_curr_pos - 100
+    current_position <- current_position - 100
 
-  } else if (pt1_curr_pos < 0) {
+  } else if (current_position < 0) {
 
-    pt1_curr_pos <- pt1_curr_pos + 100
+    current_position <- current_position + 100
 
   }
 
   # Increments total if position is zero
-  if (pt1_prev_pos == 0) {
+  if (prev_position == 0) {
     
-    pt1_total <- pt1_total + 1
+    total <- total + 1
     
   }
   
-  pt1_prev_pos <- pt1_curr_pos
+  prev_position <- current_position
 
 }
 
