@@ -1,4 +1,8 @@
+# Advent of Code 2025
 
+
+
+# Day 2 - Part 1 ---------------------------
 
 
 day2_input <- readLines("day2_input.txt") 
@@ -8,7 +12,6 @@ day2_input <- readLines("day2_input.txt")
 input <- day2_input |> strsplit(split = ",") |> 
                        unlist() 
 
-# 
 total <- 0
 
 
@@ -34,5 +37,26 @@ for (i in seq_along(input)) {
 
 
 
+
+# Day 2 - Part 2 ----------------------------------------------------------
+
+
+# This time, any sequence of digits repeated >= 2 times is an invalid ID. 
+
+total2 <- 0
+
+for (j in seq_along(input)) {
+
+  str_range <- strsplit(input[j], split = "-") |> unlist()
+  num_range <- as.numeric(str_range)
+  
+  num_seq <- seq(num_range[1], num_range[2])
+  str_seq <- as.character(num_seq)
+  
+  matches <- grepl("^(\\d+)\\1+$", str_seq)
+  
+  total2 <- total2 + sum(num_seq[matches])
+  
+}
 
 
