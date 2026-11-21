@@ -53,7 +53,7 @@ for (j in seq_along(input)) {
   num_seq <- seq(num_range[1], num_range[2])
   str_seq <- as.character(num_seq)
   
-  matches <- grepl("^(\\d+)\\1+$", str_seq)
+  matches <- grepl("^(\\d+)\\1+$", str_seq)  
   
   total2 <- total2 + sum(num_seq[matches])
   
